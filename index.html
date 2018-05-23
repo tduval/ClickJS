@@ -31,8 +31,42 @@
 
     <!-- Games panels (unvisible until clicked on welcoming text)-->
     <div id="divGameContainer">
-      <div id="divIncludeNavbar"></div>
-      <p>Let's start the show</p>
+
+      <!-- Ressources Navbar-->
+      <div class="row unique-color py-2 text-center">
+        <div class="col-1" id="divResMoney">
+          <h4 class="text-light">Money</h4>
+          <button type="button" class="btn btn-primary btn-block" id="btnResMoney">0</button>
+        </div>
+        <div class="col-1" id="divResEnergy">
+          <h4 class="text-light">Energy</h4>
+          <button type="button" class="btn btn-primary btn-block" id="btnResEnergy">0</button>
+        </div>
+        <div class="col-1" id="divResXXX">
+          <h4 class="text-light">XXX</h4>
+          <button type="button" class="btn btn-primary btn-block" id="btnResXXX">0</button>
+        </div>
+        <div class="col-1" id="divResYYY">
+          <h4 class="text-light">YYY</h4>
+          <button type="button" class="btn btn-primary btn-block" id="btnResYYY">0</button>
+        </div>
+        <div class="col-1 ml-auto" id="divResA">
+          <h4 class="text-light">Opt A</h4>
+          <button type="button" class="btn btn-primary btn-block" id="btnResA">0</button>
+        </div>
+        <div class="col-1" id="divResB">
+          <h4 class="text-light">Opt B</h4>
+          <button type="button" class="btn btn-primary btn-block" id="btnResB">0</button>
+        </div>
+      </div>
+      <!-- //Ressources Navbar-->
+
+      <!-- GameInfo row-->
+      <div class="row my-2">
+        <p>Total clicks : <span id="outTotalClick">0</span></p>
+      </div>
+      <!-- //GameInfo row-->
+
     </div>
 
   </div>
@@ -57,8 +91,33 @@
         e.preventDefault();
         $('#divIntroContainer').hide();
         $("#divGameContainer").show();
-        $("#divIncludeNavbar").load("app/html/navbar.html");
       });
+
+      window.setInterval(function() {
+        $('#outTotalClick').html(getTotalClick());
+      }, 100);
+
+      $('#btnResMoney').click(function(e) {
+        e.preventDefault();
+        console.log('click on btnResMoney');
+        $('#btnResMoney').html(incrementResMoney());
+      });
+      $('#btnResEnergy').click(function(e) {
+        e.preventDefault();
+        console.log('click on btnResEnergy');
+        $('#btnResEnergy').html(incrementResEnergy());
+      });
+      $('#btnResXXX').click(function(e) {
+        e.preventDefault();
+        console.log('click on btnResXXX');
+        $('#btnResXXX').html(incrementResXXX());
+      });
+      $('#btnResYYY').click(function(e) {
+        e.preventDefault();
+        console.log('click on btnResYYY');
+        $('#btnResYYY').html(incrementResYYY());
+      });
+
     });
   </script>
 </body>
