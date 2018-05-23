@@ -2,63 +2,65 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>ClickJS</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="assets/css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="assets/css/style.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>ClickJS</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="assets/css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="assets/css/style.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <!-- Start your project here-->
-    <div class="container-fluid">
+  <!-- Start your project here-->
+  <div class="container-fluid">
 
-      <!-- Introduction Welcoming Text-->
-      <div id="divIntroContainer" style="height: 100vh" class="flex-center flex-column">
-            <h1 class="animated fadeIn mb-4">Welcome to ClickJS</h1>
-            <p class="animated fadeIn mb-3 text-muted">Click Start to begin your journey and enjoy the experience.</p>
-            <button type="button" id="introLink" class="btn btn-default animated fadeIn">Start</button>
-      </div>
-
-      <!-- Games panels (unvisible until clicked on welcoming text)-->
-      <div id="divGameContainer">
-        <p>Let's start the show</p>
-      </div>
-      
+    <!-- Introduction Welcoming Text-->
+    <div id="divIntroContainer" style="height: 100vh" class="flex-center flex-column">
+      <h1 class="animated fadeIn mb-4">Welcome to ClickJS</h1>
+      <p class="animated fadeIn mb-3 text-muted">Click Start to begin your journey and enjoy the experience.</p>
+      <button type="button" id="introLink" class="btn btn-default animated fadeIn">Start</button>
     </div>
 
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="assets/js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="assets/js/mdb.min.js"></script>
+    <!-- Games panels (unvisible until clicked on welcoming text)-->
+    <div id="divGameContainer">
+      <div id="divIncludeNavbar"></div>
+      <p>Let's start the show</p>
+    </div>
 
-    <!-- ClickJS core JavaScript -->
-    <script type="text/javascript" src="clickJS.js"></script>
+  </div>
 
-    <script type="text/javascript">
-      $('#divGameContainer').hide();
-      $(document).ready(function() {
-        $('#introLink').click(function(e){
-          e.preventDefault();
-          $('#divIntroContainer').hide();
-          $("#divGameContainer").show();
-        });
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="assets/js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="assets/js/mdb.min.js"></script>
+
+  <!-- ClickJS core JavaScript -->
+  <script type="text/javascript" src="clickJS.js"></script>
+
+  <script type="text/javascript">
+    $('#divGameContainer').hide();
+    $(document).ready(function() {
+      $('#introLink').click(function(e) {
+        e.preventDefault();
+        $('#divIntroContainer').hide();
+        $("#divGameContainer").show();
+        $("#divIncludeNavbar").load("app/html/navbar.html");
       });
-    </script>
+    });
+  </script>
 </body>
 
 </html>
