@@ -14,21 +14,27 @@
     <link href="assets/css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="assets/css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
 
     <!-- Start your project here-->
-    <div style="height: 100vh">
-        <div class="flex-center flex-column">
+    <div class="container-fluid">
+
+      <!-- Introduction Welcoming Text-->
+      <div id="divIntroContainer" style="height: 100vh" class="flex-center flex-column">
             <h1 class="animated fadeIn mb-4">Welcome to ClickJS</h1>
+            <p class="animated fadeIn mb-3 text-muted">Click Start to begin your journey and enjoy the experience.</p>
+            <button type="button" id="introLink" class="btn btn-default animated fadeIn">Start</button>
+      </div>
 
-            <h5 class="animated fadeIn mb-3">Click here to start your journey and enjoy the experience.</h5>
-
-            <p class="animated fadeIn text-muted">tduval</p>
-        </div>
+      <!-- Games panels (unvisible until clicked on welcoming text)-->
+      <div id="divGameContainer">
+        <p>Let's start the show</p>
+      </div>
+      
     </div>
-    <!-- /Start your project here-->
 
     <!-- SCRIPTS -->
     <!-- JQuery -->
@@ -42,6 +48,17 @@
 
     <!-- ClickJS core JavaScript -->
     <script type="text/javascript" src="clickJS.js"></script>
+
+    <script type="text/javascript">
+      $('#divGameContainer').hide();
+      $(document).ready(function() {
+        $('#introLink').click(function(e){
+          e.preventDefault();
+          $('#divIntroContainer').hide();
+          $("#divGameContainer").show();
+        });
+      });
+    </script>
 </body>
 
 </html>
