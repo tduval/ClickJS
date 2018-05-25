@@ -26,9 +26,8 @@
 
             <!-- Ressources Navbar-->
             <div class="row unique-color py-2 text-center">
-                <div class="col-1" id="divResMoney">
-                    <h4 class="text-light">Money</h4>
-                    <button type="button" class="btn btn-primary btn-block" id="btnResMoney">{{ this.$store.state.moneyAmount }} $</button>
+                <div class="col" id="divResMoney">
+                    <p class="h1 text-white text-left pt-4"> Money {{ this.$store.state.moneyAmount }} $</p>
                 </div>
                 <div class="col-1 ml-auto" id="divResEnergy">
                     <h4 class="text-light">Energy</h4>
@@ -40,7 +39,7 @@
             <div class="row secondary-color text-center my-0">
                 <div class="col-1" id="divObjLabor">
                     <span class="text-light">Labor</span>
-                    <button type="button" class="btn btn-primary btn-sm" id="btnObjLabor" v-on:click="laborClick">10 Energy</button>
+                    <button type="button" class="btn btn-primary btn-sm" id="btnObjLabor" v-on:click="laborClick" v-bind:disabled="this.$store.state.labor.costEnergy > this.$store.state.energyAmount ? true : false">10 Energy</button>
                 </div>
             </div>
             <!-- //Ressources Navbar-->
