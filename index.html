@@ -21,53 +21,33 @@
 
     <!-- Start your project here-->
     <div class="container-fluid">
-
-        <!-- Introduction Welcoming Text-->
-        <div id="divIntroContainer" style="height: 100vh" class="flex-center flex-column">
-            <h1 class="animated fadeIn mb-4">Welcome to ClickJS</h1>
-            <p class="animated fadeIn mb-3 text-muted">Click Start to begin your journey and enjoy the experience.</p>
-            <button type="button" id="introLink" class="btn btn-default animated fadeIn">Start</button>
-        </div>
-
         <!-- Games panels (unvisible until clicked on welcoming text)-->
         <div id="divGameContainer">
 
             <!-- Ressources Navbar-->
             <div class="row unique-color py-2 text-center">
-                <div class="col-1" id="divResEnergy">
+                <div class="col-1" id="divResMoney">
+                    <h4 class="text-light">Money</h4>
+                    <button type="button" class="btn btn-primary btn-block" id="btnResMoney">{{ this.$store.state.moneyAmount }} $</button>
+                </div>
+                <div class="col-1 ml-auto" id="divResEnergy">
                     <h4 class="text-light">Energy</h4>
-                    <button type="button" class="btn btn-primary btn-block" id="btnResEnergy">0</button>
+                    <button type="button" class="btn btn-primary btn-block" id="btnResEnergy" v-on:click="energyClick">{{ this.$store.state.energyAmount }}</button>
                 </div>
-                <div class="col-1" id="divResCellB">
-                    <h4 class="text-light">B-Cell</h4>
-                    <button type="button" class="btn btn-primary btn-block" id="btnResCellB">0</button>
-                </div>
-                <div class="col-1" id="divResCellT">
-                    <h4 class="text-light">T-Cell</h4>
-                    <button type="button" class="btn btn-primary btn-block" id="btnResCellT">0</button>
-                </div>
-                <div class="col-1" id="divResXXX">
-                    <h4 class="text-light">XXX</h4>
-                    <button type="button" class="btn btn-primary btn-block" id="btnResXXX">0</button>
-                </div>
-                <div class="col-1" id="divResYYY">
-                    <h4 class="text-light">YYY</h4>
-                    <button type="button" class="btn btn-primary btn-block" id="btnResYYY">0</button>
-                </div>
-                <div class="col-1 ml-auto" id="divResA">
-                    <h4 class="text-light">Opt A</h4>
-                    <button type="button" class="btn btn-primary btn-block" id="btnResA">0</button>
-                </div>
-                <div class="col-1" id="divResB">
-                    <h4 class="text-light">Opt B</h4>
-                    <button type="button" class="btn btn-primary btn-block" id="btnResB">0</button>
+            </div>
+            <!-- //Ressources Navbar-->
+            <!-- Producers Navbar-->
+            <div class="row secondary-color text-center my-0">
+                <div class="col-1" id="divObjLabor">
+                    <span class="text-light">Labor</span>
+                    <button type="button" class="btn btn-primary btn-sm" id="btnObjLabor" v-on:click="laborClick">10 Energy</button>
                 </div>
             </div>
             <!-- //Ressources Navbar-->
 
             <!-- GameInfo row-->
             <div class="row my-2">
-                <p>Total clicks : <span id="outTotalClick">0</span></p>
+                <p>Total clicks : {{ this.$store.state.clickAmount }}</p>
             </div>
             <!-- //GameInfo row-->
 
@@ -85,51 +65,30 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="assets/js/mdb.min.js"></script>
 
-    <!-- VueJS lib 2.5.16 JavaScript -->
+    <!-- VueJS 2.5.16 JavaScript -->
     <script type="text/javascript" src="assets/js/vue.js"></script>
+    <!-- Vuex 3.0.1 JavaScript -->
+    <script type="text/javascript" src="assets/js/vuex.js"></script>
+
     <!-- ClickJS core JavaScript -->
     <script type="text/javascript" src="clickJS.js"></script>
 
     <script type="text/javascript">
-        $('#divGameContainer').hide();
-        $(document).ready(function() {
-            $('#introLink').click(function(e) {
-                e.preventDefault();
-                $('#divIntroContainer').hide();
-                $("#divGameContainer").show();
-            });
-
-            window.setInterval(function() {
-                $('#outTotalClick').html(getTotalClick());
-            }, 100);
-
-            $('#btnResEnergy').click(function(e) {
-                e.preventDefault();
-                console.log('click on btnResEnergy');
-                $('#btnResEnergy').html(incrementResEnergy());
-            });
-            $('#btnResCellB').click(function(e) {
-                e.preventDefault();
-                console.log('click on btnResCellB');
-                $('#btnResCellB').html(buyResCellB());
-            });
-            $('#btnResCellT').click(function(e) {
-                e.preventDefault();
-                console.log('click on btnResCellT');
-                $('#btnResCellT').html(buyResCellT());
-            });
-            $('#btnResXXX').click(function(e) {
-                e.preventDefault();
-                console.log('click on btnResXXX');
-                $('#btnResXXX').html(buyResXXX());
-            });
-            $('#btnResYYY').click(function(e) {
-                e.preventDefault();
-                console.log('click on btnResYYY');
-                $('#btnResYYY').html(buyResYYY());
-            });
-
-        });
+        var vm = new Vue({
+            el: '#divGameContainer',
+            store,
+            methods: {
+                energyClick: function () {
+                    store.commit('incrementEnergy')
+                },
+                laborClick: function () {
+                    store.commit('doLabor')
+                },
+                producerClick: function () {
+                    store.commit('buyProducer', 0)
+                }
+            },
+        })
     </script>
 </body>
 
