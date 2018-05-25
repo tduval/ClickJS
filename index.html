@@ -41,6 +41,7 @@
                     <span class="text-light">Labor</span>
                     <button type="button" class="btn btn-primary btn-sm" id="btnObjLabor" v-on:click="laborClick" v-bind:disabled="this.$store.state.labor.costEnergy > this.$store.state.energyAmount ? true : false">10 Energy</button>
                 </div>
+                <producer-list-button v-for="producer in producers" :producer="producer" :key="producer.name"></producer-list-button>
             </div>
             <!-- //Ressources Navbar-->
 
@@ -73,9 +74,38 @@
     <script type="text/javascript" src="clickJS.js"></script>
 
     <script type="text/javascript">
+        Vue.component('producer-list-button', {
+            props: ['producer'],
+            computed: {
+                totalMoney: function () {
+                  return this.$store.state.moneyAmount
+                },
+                canBuy: function () {
+                    return this.totalMoney >= this.producer.costMoney
+                }
+            },
+            methods: {
+                producerClick: function () {
+                    if (this.canBuy) {
+                        store.commit('buyProducer', { producerID: this.producer.id})
+                    }
+                }
+            },
+            template:   `<div class="col-1">
+                            <span class="text-light">{{ producer.name }}</span>
+                            <button type="button" class="btn btn-default btn-sm" v-on:click="producerClick" v-bind:disabled="canBuy === false">{{ producer.costMoney }} $</button>
+                        </div>`,
+        });
+
+
         var vm = new Vue({
             el: '#divGameContainer',
             store,
+            computed: {
+                producers: function () {
+                    return this.$store.state.producers
+                }
+            },
             methods: {
                 energyClick: function () {
                     store.commit('incrementEnergy')
@@ -83,11 +113,8 @@
                 laborClick: function () {
                     store.commit('doLabor')
                 },
-                producerClick: function () {
-                    store.commit('buyProducer', 0)
-                }
             },
-        })
+        });
     </script>
 </body>
 

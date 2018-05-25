@@ -6,9 +6,9 @@ const labor =   {
         purchased: 0
     }
 
-const producers = [
+let producers = [
     {
-        id: 1,
+        id: 0,
         name: 'Bicycle',
         costMoney: 50,
         costEnergy: 8,
@@ -19,7 +19,7 @@ const producers = [
         purchased: 0
     },
     {
-        id: 3,
+        id: 1,
         name: 'Scooter',
         costMoney: 500,
         costEnergy: 5,
@@ -30,7 +30,7 @@ const producers = [
         purchased: 0
     },
     {
-        id: 4,
+        id: 2,
         name: 'Car',
         costMoney: 1000,
         costEnergy: 10,
@@ -45,7 +45,7 @@ const producers = [
 const store = new Vuex.Store({
   state: {
     clickAmount: 0,
-    moneyAmount: 0,
+    moneyAmount: 1000,
     energyAmount: 10,
     producers: producers,
     labor: labor
@@ -62,15 +62,17 @@ const store = new Vuex.Store({
         state.moneyAmount += labor.earningMoney
     },
     buyProducer (state, producerID){
-        state.producers = state.producers.map(producer => {
-            if (producer.id === producerID) {
-                console.log(producer.name)
+        //state.producers = state.producers.map(producer => {
+        var producer = state.producers.filter(producer => producer.id === producerID)
+
+            // if (producer.id === producerID) {
+                console.log(producer)
                 producer.purchased++
                 state.energyAmount -= producer.costEnergy
                 state.moneyAmount -= producer.costMoney
-            }
-            return producer
-        })
+            // }
+            // return producer
+        // })
     }
   }
 })
