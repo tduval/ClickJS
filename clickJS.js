@@ -11,24 +11,24 @@ const vehicles = [
         name: 'Bicycle',
         costMoney: 50,
         moneyPerSeconds: 1,
-        earningMoney: 15,
-        purchased: 0
+        purchased: 0,
+        srcImg: 'assets/images/bike.png'
     },
     {
         id: 1,
         name: 'Scooter',
         costMoney: 500,
         moneyPerSeconds: 3,
-        earningMoney: 25,
-        purchased: 0
+        purchased: 0,
+        srcImg: 'assets/images/scooter.png'
     },
     {
         id: 2,
         name: 'Car',
         costMoney: 1000,
         moneyPerSeconds: 10,
-        earningMoney: 100,
-        purchased: 0
+        purchased: 0,
+        srcImg: 'assets/images/car.png'
     },
 ]
 

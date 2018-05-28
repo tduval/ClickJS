@@ -36,8 +36,10 @@
             </div>
             <!-- //Ressources Navbar-->
             <!-- vehicles Navbar-->
-            <div class="row secondary-color text-center my-0">
-                <vehicle-list-button v-for="vehicle in vehicles" :vehicle="vehicle" :key="vehicle.name"></vehicle-list-button>
+            <div class="row secondary-color text-center">
+                <div class="card-deck my-4">
+                    <vehicle-list-button v-for="vehicle in vehicles" :vehicle="vehicle" :key="vehicle.name"></vehicle-list-button>
+                </div>
             </div>
             <!-- //Vehicles Navbar-->
 
@@ -87,10 +89,20 @@
                     }
                 }
             },
-            template:   `<div class="col-1">
-                            <span class="text-light">{{ vehicle.name }}</span>
-                            <span class="text-light">({{ vehicle.purchased }})</span>
-                            <button type="button" class="btn btn-default btn-sm" v-on:click="vehicleClick" v-bind:disabled="canBuy === false">{{ vehicle.costMoney }} $</button>
+            template:   `<div class="col-2">
+                            <div class="card h-100 d-inline-block z-depth-5">
+                                <div class="view overlay">
+                                    <img v-bind:src="vehicle.srcImg" class="card-img-top z-depth-5 rounded" alt="Responsive image">
+                                    <a v-on:click="vehicleClick"><div class="mask waves-effect rgba-white-slight"></div></a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">{{ vehicle.name }}</h4>
+                                    <h5 class="text-light">{{ vehicle.purchased }} purchased</h5>
+                                    <p class="card-text">Cost : {{ vehicle.costMoney }}</p>
+                                    <p class="card-text">$/second : {{ vehicle.moneyPerSeconds }}</p>
+                                    <button type="button" class="btn btn-default btn-sm" v-on:click="vehicleClick" v-bind:disabled="canBuy === false">{{ vehicle.costMoney }} $</button>
+                                </div>
+                            </div>
                         </div>`,
         });
 
