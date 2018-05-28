@@ -107,12 +107,24 @@
                     return this.$store.state.vehicles
                 }
             },
+            mounted () {
+                this.moneyProducer()
+            },
             methods: {
                 energyClick: function () {
                     store.commit('incrementEnergy')
                 },
                 laborClick: function () {
                     store.commit('doLabor')
+                },
+                moneyProducer: function () {
+                    setInterval(() => {
+                        let moneyCount = 0 //stack the number of generated money per second
+                        for (let vehicle of this.vehicles) {
+                            moneyCount += vehicle.moneyPerSeconds * vehicle.purchased
+                        }
+                        store.commit('incrementMoney', moneyCount)
+                    }, 1000)
                 },
             },
         });

@@ -51,8 +51,12 @@ const store = new Vuex.Store({
     labor: labor
   },
   mutations: {
+    incrementMoney (state, amount=1){
+        state.moneyAmount += amount
+        console.log("Increment Money/s : ", amount)
+    },
     incrementEnergy (state, amount=1){
-        state.energyAmount+=amount
+        state.energyAmount += amount
         state.clickAmount++
         console.log("Increment Energy")
     },
