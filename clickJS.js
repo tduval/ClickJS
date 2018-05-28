@@ -6,7 +6,7 @@ const labor =   {
         purchased: 0
     }
 
-let producers = [
+const vehicles = [
     {
         id: 0,
         name: 'Bicycle',
@@ -47,28 +47,28 @@ const store = new Vuex.Store({
     clickAmount: 0,
     moneyAmount: 1000,
     energyAmount: 10,
-    producers: producers,
+    vehicles: vehicles,
     labor: labor
   },
   mutations: {
     incrementEnergy (state, amount=1){
         state.energyAmount+=amount
         state.clickAmount++
+        console.log("Increment Energy")
     },
     doLabor (state){
-        console.log(labor.name)
+        console.log("Do : ", labor.name)
         labor.purchased++
         state.energyAmount -= labor.costEnergy
         state.moneyAmount += labor.earningMoney
     },
-    buyProducer (state, producerID){
-        var producer = state.producers.find(producer => producer.id === producerID)
-        if (producer.id === producerID) {
-            producer.purchased++
-            state.energyAmount -= producer.costEnergy
-            state.moneyAmount -= producer.costMoney
+    buyVehicle (state, vehicleID){
+        var vehicle = state.vehicles.find(vehicle => vehicle.id === vehicleID)
+        if (vehicle.id === vehicleID) {
+            vehicle.purchased++
+            state.moneyAmount -= vehicle.costMoney
+            console.log("Buy vehicle : ", vehicle.name)
          }
-         return producer
     }
   }
 })

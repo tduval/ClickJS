@@ -35,15 +35,15 @@
                 </div>
             </div>
             <!-- //Ressources Navbar-->
-            <!-- Producers Navbar-->
+            <!-- vehicles Navbar-->
             <div class="row secondary-color text-center my-0">
                 <div class="col-1" id="divObjLabor">
                     <span class="text-light">Labor</span>
                     <button type="button" class="btn btn-primary btn-sm" id="btnObjLabor" v-on:click="laborClick" v-bind:disabled="this.$store.state.labor.costEnergy > this.$store.state.energyAmount ? true : false">10 Energy</button>
                 </div>
-                <producer-list-button v-for="producer in producers" :producer="producer" :key="producer.name"></producer-list-button>
+                <vehicle-list-button v-for="vehicle in vehicles" :vehicle="vehicle" :key="vehicle.name"></vehicle-list-button>
             </div>
-            <!-- //Ressources Navbar-->
+            <!-- //Vehicles Navbar-->
 
             <!-- GameInfo row-->
             <div class="row my-2">
@@ -74,27 +74,27 @@
     <script type="text/javascript" src="clickJS.js"></script>
 
     <script type="text/javascript">
-        Vue.component('producer-list-button', {
-            props: ['producer'],
+        Vue.component('vehicle-list-button', {
+            props: ['vehicle'],
             computed: {
                 totalMoney: function () {
                   return this.$store.state.moneyAmount
                 },
                 canBuy: function () {
-                    return this.totalMoney >= this.producer.costMoney
+                    return this.totalMoney >= this.vehicle.costMoney
                 }
             },
             methods: {
-                producerClick: function () {
+                vehicleClick: function () {
                     if (this.canBuy) {
-                        store.commit('buyProducer', this.producer.id)
+                        store.commit('buyVehicle', this.vehicle.id)
                     }
                 }
             },
             template:   `<div class="col-1">
-                            <span class="text-light">{{ producer.name }}</span>
-                            <span class="text-light">({{ producer.purchased }})</span>
-                            <button type="button" class="btn btn-default btn-sm" v-on:click="producerClick" v-bind:disabled="canBuy === false">{{ producer.costMoney }} $</button>
+                            <span class="text-light">{{ vehicle.name }}</span>
+                            <span class="text-light">({{ vehicle.purchased }})</span>
+                            <button type="button" class="btn btn-default btn-sm" v-on:click="vehicleClick" v-bind:disabled="canBuy === false">{{ vehicle.costMoney }} $</button>
                         </div>`,
         });
 
@@ -103,8 +103,8 @@
             el: '#divGameContainer',
             store,
             computed: {
-                producers: function () {
-                    return this.$store.state.producers
+                vehicles: function () {
+                    return this.$store.state.vehicles
                 }
             },
             methods: {
