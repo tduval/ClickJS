@@ -62,17 +62,13 @@ const store = new Vuex.Store({
         state.moneyAmount += labor.earningMoney
     },
     buyProducer (state, producerID){
-        //state.producers = state.producers.map(producer => {
-        var producer = state.producers.filter(producer => producer.id === producerID)
-
-            // if (producer.id === producerID) {
-                console.log(producer)
-                producer.purchased++
-                state.energyAmount -= producer.costEnergy
-                state.moneyAmount -= producer.costMoney
-            // }
-            // return producer
-        // })
+        var producer = state.producers.find(producer => producer.id === producerID)
+        if (producer.id === producerID) {
+            producer.purchased++
+            state.energyAmount -= producer.costEnergy
+            state.moneyAmount -= producer.costMoney
+         }
+         return producer
     }
   }
 })

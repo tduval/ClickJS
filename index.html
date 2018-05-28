@@ -87,12 +87,13 @@
             methods: {
                 producerClick: function () {
                     if (this.canBuy) {
-                        store.commit('buyProducer', { producerID: this.producer.id})
+                        store.commit('buyProducer', this.producer.id)
                     }
                 }
             },
             template:   `<div class="col-1">
                             <span class="text-light">{{ producer.name }}</span>
+                            <span class="text-light">({{ producer.purchased }})</span>
                             <button type="button" class="btn btn-default btn-sm" v-on:click="producerClick" v-bind:disabled="canBuy === false">{{ producer.costMoney }} $</button>
                         </div>`,
         });
