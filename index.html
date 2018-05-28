@@ -27,20 +27,16 @@
             <!-- Ressources Navbar-->
             <div class="row unique-color py-2 text-center">
                 <div class="col" id="divResMoney">
-                    <p class="h1 text-white text-left pt-4"> Money {{ this.$store.state.moneyAmount }} $</p>
+                    <p class="h1 text-white text-left pt-4"> Money {{ this.$store.state.moneyAmount }} $ <small class="red-text">(+{{ this.$store.state.moneyPerSecond }} $/s)</small></p>
                 </div>
-                <div class="col-1 ml-auto" id="divResEnergy">
-                    <h4 class="text-light">Energy</h4>
-                    <button type="button" class="btn btn-primary btn-block" id="btnResEnergy" v-on:click="energyClick">{{ this.$store.state.energyAmount }}</button>
+                <div class="col-2 ml-auto" id="divResLabor">
+                    <h4 class="text-light">Manual Labor</h4>
+                    <button type="button" class="btn btn-primary btn-block" id="btnResLabor" v-on:click="laborClick">+{{ this.$store.state.labor.earningMoney }} $</button>
                 </div>
             </div>
             <!-- //Ressources Navbar-->
             <!-- vehicles Navbar-->
             <div class="row secondary-color text-center my-0">
-                <div class="col-1" id="divObjLabor">
-                    <span class="text-light">Labor</span>
-                    <button type="button" class="btn btn-primary btn-sm" id="btnObjLabor" v-on:click="laborClick" v-bind:disabled="this.$store.state.labor.costEnergy > this.$store.state.energyAmount ? true : false">10 Energy</button>
-                </div>
                 <vehicle-list-button v-for="vehicle in vehicles" :vehicle="vehicle" :key="vehicle.name"></vehicle-list-button>
             </div>
             <!-- //Vehicles Navbar-->
@@ -111,19 +107,13 @@
                 this.moneyProducer()
             },
             methods: {
-                energyClick: function () {
-                    store.commit('incrementEnergy')
-                },
                 laborClick: function () {
                     store.commit('doLabor')
                 },
                 moneyProducer: function () {
                     setInterval(() => {
-                        let moneyCount = 0 //stack the number of generated money per second
-                        for (let vehicle of this.vehicles) {
-                            moneyCount += vehicle.moneyPerSeconds * vehicle.purchased
-                        }
-                        store.commit('incrementMoney', moneyCount)
+                        store.commit('countMoneyPerSecond')
+                        store.commit('incrementMoney')
                     }, 1000)
                 },
             },
