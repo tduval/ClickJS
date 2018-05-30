@@ -26,13 +26,8 @@
 
             <!-- Ressources Navbar-->
             <div class="row unique-color py-2 text-center">
-                <div class="col" id="divResMoney">
-                    <p class="h1 text-white text-left pt-4"> Money {{ this.$store.state.moneyAmount }} $ <small class="red-text">(+{{ this.$store.state.moneyPerSecond }} $/s)</small></p>
-                </div>
-                <div class="col-2 ml-auto" id="divResLabor">
-                    <h4 class="text-light">Manual Labor</h4>
-                    <button type="button" class="btn btn-primary btn-block" id="btnResLabor" v-on:click="laborClick">+{{ this.$store.state.labor.earningMoney }} $</button>
-                </div>
+                <div-money></div-money>
+                <div-labor></div-labor>
             </div>
             <!-- //Ressources Navbar-->
             <!-- vehicles Navbar-->
@@ -72,6 +67,37 @@
     <script type="text/javascript" src="clickJS.js"></script>
 
     <script type="text/javascript">
+        Vue.component('div-money', {
+            computed: {
+                totalMoney: function () {
+                  return this.$store.state.moneyAmount
+                },
+                totalMoneyPerSecond: function () {
+                  return this.$store.state.moneyPerSecond
+                }
+            },
+            template:   `<div class="col" id="divResMoney">
+                            <p class="h1 text-white text-left pt-4"> Money {{ totalMoney }} $ <small class="red-text">(+{{ totalMoneyPerSecond }} $/s)</small></p>
+                        </div>`,
+        });
+
+        Vue.component('div-labor', {
+            computed: {
+                laborObject: function () {
+                  return this.$store.state.labor
+                }
+            },
+            methods: {
+                laborClick: function () {
+                    store.commit('doLabor')
+                }
+            },
+            template:   `<div class="col-2 ml-auto" id="divResLabor">
+                            <h4 class="text-light">Manual Labor</h4>
+                            <button type="button" class="btn btn-primary btn-block" id="btnResLabor" v-on:click="laborClick">+{{ laborObject.earningMoney }} $</button>
+                        </div>`,
+        });
+
         Vue.component('vehicle-list-button', {
             props: ['vehicle'],
             computed: {
