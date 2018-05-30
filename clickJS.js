@@ -12,7 +12,8 @@ const vehicles = [
         costMoney: 50,
         moneyPerSeconds: 1,
         purchased: 0,
-        srcImg: 'assets/images/bike.jpg'
+        srcImg: 'assets/images/bike.jpg',
+        srcIco: 'fa fa-bicycle fa-3x'
     },
     {
         id: 1,
@@ -20,7 +21,8 @@ const vehicles = [
         costMoney: 500,
         moneyPerSeconds: 3,
         purchased: 0,
-        srcImg: 'assets/images/scooter.jpg'
+        srcImg: 'assets/images/scooter.jpg',
+        srcIco: 'fa fa-motorcycle fa-3x'
     },
     {
         id: 2,
@@ -28,7 +30,8 @@ const vehicles = [
         costMoney: 1000,
         moneyPerSeconds: 10,
         purchased: 0,
-        srcImg: 'assets/images/car.jpg'
+        srcImg: 'assets/images/car.jpg',
+        srcIco: 'fa fa-car fa-3x'
     },
 ]
 
