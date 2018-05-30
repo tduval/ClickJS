@@ -76,7 +76,7 @@
                   return this.$store.state.moneyPerSecond
                 }
             },
-            template:   `<div class="col" id="divResMoney">
+            template:   `<div class="col-sm col-xs-12" id="divResMoney">
                             <p class="h1 text-white text-left pt-4"> Money {{ totalMoney }} $ <small class="red-text">(+{{ totalMoneyPerSecond }} $/s)</small></p>
                         </div>`,
         });
@@ -92,7 +92,7 @@
                     store.commit('doLabor')
                 }
             },
-            template:   `<div class="col-2 ml-auto" id="divResLabor">
+            template:   `<div class="col-sm-2 col-xs-12 ml-auto" id="divResLabor">
                             <h4 class="text-light">Manual Labor</h4>
                             <button type="button" class="btn btn-primary btn-block" id="btnResLabor" v-on:click="laborClick">+{{ laborObject.earningMoney }} $</button>
                         </div>`,
@@ -115,7 +115,7 @@
                     }
                 }
             },
-            template:   `<div class="col">
+            template:   `<div class="col-sm col-xs-6">
                             <div class="card d-inline-block z-depth-5">
                                 <div class="view overlay">
                                     <img v-bind:src="vehicle.srcImg" class="card-img-top z-depth-5 rounded" alt="Responsive image" style="height: 100px">
