@@ -12,7 +12,7 @@ const vehicles = [
         costMoney: 50,
         moneyPerSeconds: 1,
         purchased: 0,
-        srcImg: 'assets/images/bike.png'
+        srcImg: 'assets/images/bike.jpg'
     },
     {
         id: 1,
@@ -20,7 +20,7 @@ const vehicles = [
         costMoney: 500,
         moneyPerSeconds: 3,
         purchased: 0,
-        srcImg: 'assets/images/scooter.png'
+        srcImg: 'assets/images/scooter.jpg'
     },
     {
         id: 2,
@@ -28,7 +28,7 @@ const vehicles = [
         costMoney: 1000,
         moneyPerSeconds: 10,
         purchased: 0,
-        srcImg: 'assets/images/car.png'
+        srcImg: 'assets/images/car.jpg'
     },
 ]
 

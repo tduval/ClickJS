@@ -89,10 +89,10 @@
                     }
                 }
             },
-            template:   `<div class="col-2">
-                            <div class="card h-100 d-inline-block z-depth-5">
+            template:   `<div class="col">
+                            <div class="card d-inline-block z-depth-5">
                                 <div class="view overlay">
-                                    <img v-bind:src="vehicle.srcImg" class="card-img-top z-depth-5 rounded" alt="Responsive image">
+                                    <img v-bind:src="vehicle.srcImg" class="card-img-top z-depth-5 rounded" alt="Responsive image" style="height: 100px">
                                     <a v-on:click="vehicleClick"><div class="mask waves-effect rgba-white-slight"></div></a>
                                 </div>
                                 <div class="card-body text-center">
