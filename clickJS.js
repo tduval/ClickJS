@@ -14,7 +14,7 @@ const vehicles = [
         purchased: 0,
         discovered: false,
         srcIco: 'fa fa-bicycle',
-        srcSprite: 'assets/images/bicycle_spritesheet.png',
+        srcSprite: 'assets/images/bicycle_spritesheet_h63px.png',
     },
     {
         id: 1,
@@ -24,7 +24,7 @@ const vehicles = [
         purchased: 0,
         discovered: false,
         srcIco: 'fa fa-motorcycle',
-        srcSprite: 'assets/images/bicycle_spritesheet.png',
+        srcSprite: 'assets/images/scooter_spritesheet_h63px.png',
     },
     {
         id: 2,
@@ -34,7 +34,7 @@ const vehicles = [
         purchased: 0,
         discovered: false,
         srcIco: 'fa fa-car',
-        srcSprite: 'assets/images/bicycle_spritesheet.png',
+        srcSprite: 'assets/images/car_spritesheet_h63px.png',
     },
 ]
 
