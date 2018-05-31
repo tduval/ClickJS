@@ -104,6 +104,7 @@
                   return this.$store.state.moneyAmount
                 },
                 canBuy: function () {
+                    store.commit('discoverVehicle')
                     return this.totalMoney >= this.vehicle.costMoney
                 }
             },
@@ -114,7 +115,7 @@
                     }
                 }
             },
-            template:   `<div class="col-sm col-xs-6 my-4">
+            template:   `<div class="col-sm col-xs-6 my-4" v-show="vehicle.discovered">
                             <div v-on:click="vehicleClick" class="stylish-color-dark rounded hoverable">
                                 <div class="row">
                                     <div class="col-2">
@@ -126,7 +127,7 @@
                                         <strong v-bind:class="{'green-text': canBuy === true, 'red-text': canBuy === false }"><br>{{ vehicle.costMoney }} $</strong>
                                     </div>
                                     <div class="col-6 text-right">
-                                        <h1 class="text-light pr-4">{{ vehicle.purchased }}</h5>
+                                        <h1 class="text-light pr-4">{{ vehicle.purchased }}</h1>
                                     </div>
                                 </div>
                             </div>
