@@ -1,0 +1,32 @@
+.vehicle-Bicycle {
+    width: 63px;
+    height: 63px;
+    background: url('../images/bicycle_spritesheet_h63px.png') left center;
+    animation: Bicycle-play .8s steps(10) infinite;
+}
+
+@keyframes Bicycle-play {
+    100% { background-position: -625px; }
+}
+
+.vehicle-Scooter {
+    width: 63px;
+    height: 63px;
+    background: url('../images/scooter_spritesheet_h63px.png') left center;
+    animation: Scooter-play .3s steps(3) infinite;
+}
+
+@keyframes Scooter-play {
+    100% { background-position: -189px; }
+}
+
+.vehicle-Car {
+    width: 63px;
+    height: 63px;
+    background: url('../images/car_spritesheet_h63px.png') left center;
+    animation: Car-play 1.5s steps(20) infinite;
+}
+
+@keyframes Car-play {
+    100% { background-position: -1260px; }
+}

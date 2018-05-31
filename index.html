@@ -43,6 +43,12 @@
             </div>
             <!-- //GameInfo row-->
 
+            <!-- Sprite Game Render section-->
+            <div class="row my-2 blue lighten-5">
+                <animated-spritesheet v-for="vehicle in vehicles" :vehicle="vehicle" :key="vehicle.name"></animated-spritesheet>
+            </div>
+            <!-- //Sprite Game Render section-->
+
         </div>
 
     </div>
@@ -134,6 +140,14 @@
                         </div>`,
         });
 
+        Vue.component('animated-spritesheet', {
+            props: ['vehicle'],
+            template:   `<div class="col-sm col-xs-6 my-4 animated bounceInLeft" v-if="vehicle.purchased > 0">
+                            <div class="row">
+                                <div v-bind:class="'vehicle-' + vehicle.name" v-for="qty in vehicle.purchased"></div>
+                            </div>
+                        </div>`,
+        });
 
         var vm = new Vue({
             el: '#divGameContainer',

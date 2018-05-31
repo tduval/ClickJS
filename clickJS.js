@@ -13,7 +13,8 @@ const vehicles = [
         moneyPerSeconds: 1,
         purchased: 0,
         discovered: false,
-        srcIco: 'fa fa-bicycle'
+        srcIco: 'fa fa-bicycle',
+        srcSprite: 'assets/images/bicycle_spritesheet.png',
     },
     {
         id: 1,
@@ -22,7 +23,8 @@ const vehicles = [
         moneyPerSeconds: 3,
         purchased: 0,
         discovered: false,
-        srcIco: 'fa fa-motorcycle'
+        srcIco: 'fa fa-motorcycle',
+        srcSprite: 'assets/images/bicycle_spritesheet.png',
     },
     {
         id: 2,
@@ -31,14 +33,15 @@ const vehicles = [
         moneyPerSeconds: 10,
         purchased: 0,
         discovered: false,
-        srcIco: 'fa fa-car'
+        srcIco: 'fa fa-car',
+        srcSprite: 'assets/images/bicycle_spritesheet.png',
     },
 ]
 
 const store = new Vuex.Store({
   state: {
     clickAmount: 0,
-    moneyAmount: 1000,
+    moneyAmount: 10000,
     moneyPerSecond: 0,
     vehicles: vehicles,
     labor: labor
@@ -64,7 +67,7 @@ const store = new Vuex.Store({
         },
         discoverVehicle (state){
             for (let vehicle of state.vehicles) {
-                if(vehicle.discovered === false && state.moneyAmount > vehicle.costMoney){
+                if(vehicle.discovered === false && state.moneyAmount >= vehicle.costMoney){
                     console.log("Discovered : ", vehicle.name)
                     vehicle.discovered = true
                 }
