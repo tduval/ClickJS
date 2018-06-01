@@ -43,11 +43,10 @@
             </div>
             <!-- //GameInfo row-->
 
-            <!-- Sprite Game Render section-->
-            <div class="row my-2 blue lighten-5">
+            <div class="row my-2 elegant-color" style="height: 1200px;">
                 <animated-spritesheet v-for="vehicle in vehicles" :vehicle="vehicle" :key="vehicle.name"></animated-spritesheet>
+                <div id="planet"></div>
             </div>
-            <!-- //Sprite Game Render section-->
 
         </div>
 
@@ -70,6 +69,7 @@
 
     <!-- ClickJS core JavaScript -->
     <script type="text/javascript" src="clickJS.js"></script>
+    <!-- //SCRIPTS -->
 
     <script type="text/javascript">
         Vue.component('div-money', {

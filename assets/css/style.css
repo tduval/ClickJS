@@ -30,3 +30,17 @@
 @keyframes Car-play {
     100% { background-position: -1260px; }
 }
+
+#planet {
+    position: relative;
+    margin: auto;
+    height: 612px;
+    width: 612px;
+    background: url('../images/planet.png') center;
+    animation: myOrbit 50s linear infinite;
+}
+
+@keyframes myOrbit {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
