@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>ClickJS</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="assets/css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="assets/css/style.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="assets/css/fontawesome-all.min.css" rel="stylesheet">
 
 </head>
 
@@ -21,55 +22,31 @@
 
     <!-- Start your project here-->
     <div class="container-fluid">
-
-        <!-- Introduction Welcoming Text-->
-        <div id="divIntroContainer" style="height: 100vh" class="flex-center flex-column">
-            <h1 class="animated fadeIn mb-4">Welcome to ClickJS</h1>
-            <p class="animated fadeIn mb-3 text-muted">Click Start to begin your journey and enjoy the experience.</p>
-            <button type="button" id="introLink" class="btn btn-default animated fadeIn">Start</button>
-        </div>
-
         <!-- Games panels (unvisible until clicked on welcoming text)-->
         <div id="divGameContainer">
 
             <!-- Ressources Navbar-->
             <div class="row unique-color py-2 text-center">
-                <div class="col-1" id="divResEnergy">
-                    <h4 class="text-light">Energy</h4>
-                    <button type="button" class="btn btn-primary btn-block" id="btnResEnergy">0</button>
-                </div>
-                <div class="col-1" id="divResCellB">
-                    <h4 class="text-light">B-Cell</h4>
-                    <button type="button" class="btn btn-primary btn-block" id="btnResCellB">0</button>
-                </div>
-                <div class="col-1" id="divResCellT">
-                    <h4 class="text-light">T-Cell</h4>
-                    <button type="button" class="btn btn-primary btn-block" id="btnResCellT">0</button>
-                </div>
-                <div class="col-1" id="divResXXX">
-                    <h4 class="text-light">XXX</h4>
-                    <button type="button" class="btn btn-primary btn-block" id="btnResXXX">0</button>
-                </div>
-                <div class="col-1" id="divResYYY">
-                    <h4 class="text-light">YYY</h4>
-                    <button type="button" class="btn btn-primary btn-block" id="btnResYYY">0</button>
-                </div>
-                <div class="col-1 ml-auto" id="divResA">
-                    <h4 class="text-light">Opt A</h4>
-                    <button type="button" class="btn btn-primary btn-block" id="btnResA">0</button>
-                </div>
-                <div class="col-1" id="divResB">
-                    <h4 class="text-light">Opt B</h4>
-                    <button type="button" class="btn btn-primary btn-block" id="btnResB">0</button>
-                </div>
+                <div-money></div-money>
+                <div-labor></div-labor>
             </div>
             <!-- //Ressources Navbar-->
+            <!-- vehicles Navbar-->
+            <div class="row text-center">
+                <vehicle-list-button v-for="vehicle in vehicles" :vehicle="vehicle" :key="vehicle.name"></vehicle-list-button>
+            </div>
+            <!-- //Vehicles Navbar-->
 
             <!-- GameInfo row-->
             <div class="row my-2">
-                <p>Total clicks : <span id="outTotalClick">0</span></p>
+                <p>Total clicks : {{ this.$store.state.clickAmount }}</p>
             </div>
             <!-- //GameInfo row-->
+
+            <div class="row my-2 elegant-color" style="height: 1200px;">
+                <animated-spritesheet v-for="vehicle in vehicles" :vehicle="vehicle" :key="vehicle.name"></animated-spritesheet>
+                <div id="planet"></div>
+            </div>
 
         </div>
 
@@ -85,48 +62,113 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="assets/js/mdb.min.js"></script>
 
+    <!-- VueJS 2.5.16 JavaScript -->
+    <script type="text/javascript" src="assets/js/vue.js"></script>
+    <!-- Vuex 3.0.1 JavaScript -->
+    <script type="text/javascript" src="assets/js/vuex.js"></script>
+
     <!-- ClickJS core JavaScript -->
     <script type="text/javascript" src="clickJS.js"></script>
+    <!-- //SCRIPTS -->
 
     <script type="text/javascript">
-        $('#divGameContainer').hide();
-        $(document).ready(function() {
-            $('#introLink').click(function(e) {
-                e.preventDefault();
-                $('#divIntroContainer').hide();
-                $("#divGameContainer").show();
-            });
+        Vue.component('div-money', {
+            computed: {
+                totalMoney: function () {
+                  return this.$store.state.moneyAmount
+                },
+                totalMoneyPerSecond: function () {
+                  return this.$store.state.moneyPerSecond
+                }
+            },
+            template:   `<div class="col-sm col-xs-12" id="divResMoney">
+                            <p class="h1 text-white text-left pt-4"> Money {{ totalMoney }} $ <small class="red-text">(+{{ totalMoneyPerSecond }} $/s)</small></p>
+                        </div>`,
+        });
 
-            window.setInterval(function() {
-                $('#outTotalClick').html(getTotalClick());
-            }, 100);
+        Vue.component('div-labor', {
+            computed: {
+                laborObject: function () {
+                  return this.$store.state.labor
+                }
+            },
+            methods: {
+                laborClick: function () {
+                    store.commit('doLabor')
+                }
+            },
+            template:   `<div class="col-sm-2 col-xs-12 ml-auto" id="divResLabor">
+                            <h4 class="text-light"><i class="fas fa-shoe-prints"></i>  Manual Labor</h4>
+                            <button type="button" class="btn btn-primary btn-block" id="btnResLabor" v-on:click="laborClick">+{{ laborObject.earningMoney }} $</button>
+                        </div>`,
+        });
 
-            $('#btnResEnergy').click(function(e) {
-                e.preventDefault();
-                console.log('click on btnResEnergy');
-                $('#btnResEnergy').html(incrementResEnergy());
-            });
-            $('#btnResCellB').click(function(e) {
-                e.preventDefault();
-                console.log('click on btnResCellB');
-                $('#btnResCellB').html(buyResCellB());
-            });
-            $('#btnResCellT').click(function(e) {
-                e.preventDefault();
-                console.log('click on btnResCellT');
-                $('#btnResCellT').html(buyResCellT());
-            });
-            $('#btnResXXX').click(function(e) {
-                e.preventDefault();
-                console.log('click on btnResXXX');
-                $('#btnResXXX').html(buyResXXX());
-            });
-            $('#btnResYYY').click(function(e) {
-                e.preventDefault();
-                console.log('click on btnResYYY');
-                $('#btnResYYY').html(buyResYYY());
-            });
+        Vue.component('vehicle-list-button', {
+            props: ['vehicle'],
+            computed: {
+                totalMoney: function () {
+                  return this.$store.state.moneyAmount
+                },
+                canBuy: function () {
+                    store.commit('discoverVehicle')
+                    return this.totalMoney >= this.vehicle.costMoney
+                }
+            },
+            methods: {
+                vehicleClick: function () {
+                    if (this.canBuy) {
+                        store.commit('buyVehicle', this.vehicle.id)
+                    }
+                }
+            },
+            template:   `<div class="col-sm col-xs-6 my-4" v-show="vehicle.discovered">
+                            <div v-on:click="vehicleClick" class="stylish-color-dark rounded hoverable">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <i class="fa-3x" v-bind:class="[vehicle.srcIco, {'green-text': canBuy === true, 'red-text': canBuy === false }]"></i>
+                                    </div>
+                                    <div class="col-4 text-left">
+                                        <span class="h4 white-text">{{ vehicle.name }}</span>
+                                        <span class="text-light">+{{ vehicle.moneyPerSeconds }} $/s</span>
+                                        <strong v-bind:class="{'green-text': canBuy === true, 'red-text': canBuy === false }"><br>{{ vehicle.costMoney }} $</strong>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <h1 class="text-light pr-4">{{ vehicle.purchased }}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`,
+        });
 
+        Vue.component('animated-spritesheet', {
+            props: ['vehicle'],
+            template:   `<div class="row mx-3">
+                            <div v-bind:class="'vehicle-' + vehicle.name" v-for="qty in vehicle.purchased"></div>
+                        </div>`,
+        });
+
+        var vm = new Vue({
+            el: '#divGameContainer',
+            store,
+            computed: {
+                vehicles: function () {
+                    return this.$store.state.vehicles
+                }
+            },
+            mounted () {
+                this.moneyProducer()
+            },
+            methods: {
+                laborClick: function () {
+                    store.commit('doLabor')
+                },
+                moneyProducer: function () {
+                    setInterval(() => {
+                        store.commit('countMoneyPerSecond')
+                        store.commit('incrementMoney')
+                    }, 1000)
+                },
+            },
         });
     </script>
 </body>
