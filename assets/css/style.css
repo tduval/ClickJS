@@ -1,46 +1,41 @@
 .vehicle-Bicycle {
+    position: absolute;
+    margin: auto;
     width: 63px;
     height: 63px;
-    background: url('../images/bicycle_spritesheet_h63px.png') left center;
-    animation: Bicycle-play .8s steps(10) infinite;
-}
-
-@keyframes Bicycle-play {
-    100% { background-position: -625px; }
+    top: 283px;
+    left: 283px;
+    animation: myVehicleOrbit 10s linear infinite;
 }
 
 .vehicle-Scooter {
     width: 63px;
     height: 63px;
-    background: url('../images/scooter_spritesheet_h63px.png') left center;
-    animation: Scooter-play .3s steps(3) infinite;
-}
-
-@keyframes Scooter-play {
-    100% { background-position: -189px; }
 }
 
 .vehicle-Car {
     width: 63px;
     height: 63px;
-    background: url('../images/car_spritesheet_h63px.png') left center;
-    animation: Car-play 1.5s steps(20) infinite;
 }
 
-@keyframes Car-play {
-    100% { background-position: -1260px; }
+@keyframes myVehicleOrbit {
+    from { transform: rotate(360deg) translateY(283px); }
+    to   { transform: rotate(0deg) translateY(283px); }
 }
+
 
 #planet {
     position: relative;
     margin: auto;
-    height: 612px;
-    width: 612px;
-    background: url('../images/planet.png') center;
-    animation: myOrbit 50s linear infinite;
+    height: 630px;
+    width: 630px;
+    border-radius: 50%;
+    background-color: #bbb;
+    /*animation: myPlanetRotation 50s linear infinite;
 }
 
-@keyframes myOrbit {
+@keyframes myPlanetRotation {
     from { transform: rotate(0deg); }
     to   { transform: rotate(360deg); }
 }
+*/

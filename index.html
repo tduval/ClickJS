@@ -44,8 +44,9 @@
             <!-- //GameInfo row-->
 
             <div class="row my-2 elegant-color" style="height: 1200px;">
-                <animated-spritesheet v-for="vehicle in vehicles" :vehicle="vehicle" :key="vehicle.name"></animated-spritesheet>
-                <div id="planet"></div>
+                <div id="planet">
+                    <animated-spritesheet v-for="vehicle in vehicles" :vehicle="vehicle" :key="vehicle.name"></animated-spritesheet>
+                </div>
             </div>
 
         </div>
@@ -151,9 +152,7 @@
 
         Vue.component('animated-spritesheet', {
             props: ['vehicle'],
-            template:   `<div class="row mx-3">
-                            <div v-bind:class="'vehicle-' + vehicle.name" v-for="qty in vehicle.purchased"></div>
-                        </div>`,
+            template:   `<div><img v-bind:src="'assets/images/'+vehicle.name+'_h63px.gif'" v-bind:class="'vehicle-' + vehicle.name" v-for="qty in vehicle.purchased"></img></div>`,
         });
 
         var vm = new Vue({
