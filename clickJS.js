@@ -82,3 +82,22 @@ const store = new Vuex.Store({
         }
     }
 })
+
+function popUp(text, size, color, animation, e) {
+    let popUp = document.createElement('div')
+    popUp.innerHTML = text
+
+    Object.assign(popUp.style, {
+        position: 'absolute',
+        top: `${e.clientY}px`,
+        left: `${e.clientX}px`,
+        fontSize: size,
+        fontWeight: 'bold',
+        color: color,
+        userSelect: 'none',
+        pointerEvents: 'none'
+    })
+
+    document.body.appendChild(popUp)
+    popUp.classList.add('animated', animation)
+}

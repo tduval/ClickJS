@@ -93,8 +93,9 @@
                 }
             },
             methods: {
-                laborClick: function () {
+                laborClick: function (e) {
                     store.commit('doLabor')
+                    popUp("+1$", '24px', 'green', 'fadeOutUp', e)
                 }
             },
             template:   `<div class="col-sm-2 col-xs-12 ml-auto" id="divResLabor">
@@ -115,14 +116,14 @@
                 },
                 progress: function () {
                     let progressPc = ((this.totalMoney / this.vehicle.costMoney) * 100)
-                    console.log("Progress of ", this.vehicle.name, " : ", progressPc)
                     return ( progressPc <= 100 ? progressPc : 100)
                 }
             },
             methods: {
-                vehicleClick: function () {
+                vehicleClick: function (e) {
                     if (this.canBuy) {
                         store.commit('buyVehicle', this.vehicle.id)
+                        popUp("-"+this.vehicle.costMoney+"$", '24px', 'red', 'fadeOutUp', e)
                     }
                 }
             },
