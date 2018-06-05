@@ -5,7 +5,12 @@
     height: 63px;
     top: 170px;
     left: 170px;
-    animation: myVehicleOrbit 15s linear infinite;
+    z-index: 5;
+    animation: myBicycleOrbit 15s linear infinite;
+}
+@keyframes myBicycleOrbit {
+    from { transform: rotate(0deg) translateY(-140px); }
+    to   { transform: rotate(360deg) translateY(-140px); }
 }
 
 .vehicle-Scooter {
@@ -15,7 +20,12 @@
     height: 63px;
     top: 170px;
     left: 170px;
-    animation: myVehicleOrbit 10s linear infinite;
+    z-index: 4;
+    animation: myScooterOrbit 10s linear infinite;
+}
+@keyframes myScooterOrbit {
+    from { transform: rotate(0deg) translateY(-180px); }
+    to   { transform: rotate(360deg) translateY(-180px); }
 }
 
 .vehicle-Car {
@@ -25,12 +35,13 @@
     height: 63px;
     top: 170px;
     left: 170px;
+    z-index: 3;
     animation: myVehicleOrbit 5s linear infinite;
 }
 
 @keyframes myVehicleOrbit {
-    from { transform: rotate(0deg) translateY(-231px); }
-    to   { transform: rotate(360deg) translateY(-231px); }
+    from { transform: rotate(0deg) translateY(-230px); }
+    to   { transform: rotate(360deg) translateY(-230px); }
 }
 
 #planet {
