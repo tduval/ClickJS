@@ -26,7 +26,7 @@
         <div id="divGameContainer">
 
             <!-- Ressources Navbar-->
-            <div class="row unique-color py-2 text-center">
+            <div class="row unique-color py-2">
                 <div-money></div-money>
                 <div-labor></div-labor>
             </div>
@@ -82,8 +82,9 @@
                   return this.$store.state.moneyPerSecond
                 }
             },
-            template:   `<div class="col-sm col-xs-12" id="divResMoney">
-                            <p class="h1 text-white text-left pt-4"> Money {{ totalMoney }} $ <small class="red-text">(+{{ totalMoneyPerSecond }} $/s)</small></p>
+            template:   `<div class="col-12 col-sm-auto" id="divResMoney">
+                            <span class="h1 text-white text-left pt-4"> Money {{ totalMoney }} $ </span>
+                            <span class="text-left red-text">(+{{ totalMoneyPerSecond }} $/s)</span>
                         </div>`,
         });
 
@@ -96,12 +97,11 @@
             methods: {
                 laborClick: function (e) {
                     store.commit('doLabor')
-                    popUp("+1$", '24px', 'green', 'fadeOutUp', e)
+                    popUp("+1$", '24px', 'white', 'fadeOutUp', e)
                 }
             },
-            template:   `<div class="col-sm-2 col-xs-12 ml-auto" id="divResLabor">
-                            <h4 class="text-light"><i class="fas fa-shoe-prints"></i>  Manual Labor</h4>
-                            <button type="button" class="btn btn-primary btn-block" id="btnResLabor" v-on:click="laborClick">+{{ laborObject.earningMoney }} $</button>
+            template:   `<div class="col-12 col-sm-auto ml-auto" id="divResLabor">
+                            <button type="button" class="btn btn-primary btn-block" id="btnResLabor" v-on:click="laborClick"><span class="text-light"><i class="fas fa-shoe-prints"></i>  Manual Labor</span></button>
                         </div>`,
         });
 
@@ -128,18 +128,18 @@
                     }
                 }
             },
-            template:   `<div class="col-sm col-xs-6 my-4" v-show="vehicle.discovered">
+            template:   `<div class="col-sm col-xs-6 my-2" v-show="vehicle.discovered">
                             <div v-on:click="vehicleClick" class="stylish-color-dark rounded hoverable">
                                 <div class="row">
-                                    <div class="col-2">
-                                        <i class="fa-3x" v-bind:class="[vehicle.srcIco, {'green-text': canBuy === true, 'red-text': canBuy === false }]"></i>
+                                    <div class="col-2 col-xs">
+                                        <i class="p-2 fa-2x fa-fw" v-bind:class="[vehicle.srcIco, {'green-text': canBuy === true, 'red-text': canBuy === false }]"></i>
                                     </div>
-                                    <div class="col-4 text-left">
+                                    <div class="col-auto col-xs-8 text-left">
                                         <span class="h4 white-text">{{ vehicle.name }}</span>
                                         <span class="text-light">+{{ vehicle.moneyPerSeconds }} $/s</span>
                                         <strong v-bind:class="{'green-text': canBuy === true, 'red-text': canBuy === false }"><br>{{ vehicle.costMoney }} $</strong>
                                     </div>
-                                    <div class="col-6 text-right">
+                                    <div class="col col-xs text-right">
                                         <h1 class="text-light pr-4">{{ vehicle.purchased }}</h1>
                                     </div>
                                 </div>
