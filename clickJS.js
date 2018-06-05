@@ -41,7 +41,7 @@ const vehicles = [
 const store = new Vuex.Store({
   state: {
     clickAmount: 0,
-    moneyAmount: 10000,
+    moneyAmount: 1,
     moneyPerSecond: 0,
     vehicles: vehicles,
     labor: labor
