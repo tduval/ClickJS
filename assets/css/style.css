@@ -33,19 +33,20 @@
     to   { transform: rotate(360deg) translateY(-231px); }
 }
 
-
 #planet {
     position: relative;
     margin: auto;
     height: 400px;
     width: 400px;
     border-radius: 50%;
-    background-color: #bbb;
-    /*animation: myPlanetRotation 50s linear infinite;
+    background-color: #5E8249;
+    background: url(../images/planet_map.jpg) 0 0 repeat;
+    background-size:800px;
+    box-shadow: inset 20px 0 80px 6px #496282;
+    animation: myPlanetRotation 50s linear infinite;
 }
 
 @keyframes myPlanetRotation {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
+    0% {background-position: 0 0;}
+    100% {background-position: 800px 0;}
 }
-*/
