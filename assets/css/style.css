@@ -5,7 +5,7 @@
     height: 63px;
     top: 283px;
     left: 283px;
-    animation: myVehicleOrbit 10s linear infinite;
+    animation: myVehicleOrbit 15s linear infinite;
 }
 
 .vehicle-Scooter {
@@ -25,7 +25,7 @@
     height: 63px;
     top: 283px;
     left: 283px;
-    animation: myVehicleOrbit 10s linear infinite;
+    animation: myVehicleOrbit 5s linear infinite;
 }
 
 @keyframes myVehicleOrbit {
