@@ -38,12 +38,12 @@
             <!-- //Vehicles Navbar-->
 
             <!-- GameInfo row-->
-            <div class="row my-2">
-                <p>Total clicks : {{ this.$store.state.clickAmount }}</p>
+            <div class="row elegant-color">
+                <p class="text-muted">Total clicks : {{ this.$store.state.clickAmount }}</p>
             </div>
             <!-- //GameInfo row-->
 
-            <div class="row my-2 elegant-color" style="height: 1200px;">
+            <div class="row elegant-color p-5" style="height: auto;">
                 <div id="planet">
                     <animated-spritesheet v-for="vehicle in vehicles" :vehicle="vehicle" :key="vehicle.name"></animated-spritesheet>
                 </div>

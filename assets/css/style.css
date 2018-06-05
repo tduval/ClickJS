@@ -3,8 +3,8 @@
     margin: auto;
     width: 63px;
     height: 63px;
-    top: 283px;
-    left: 283px;
+    top: 170px;
+    left: 170px;
     animation: myVehicleOrbit 15s linear infinite;
 }
 
@@ -13,8 +13,8 @@
     margin: auto;
     width: 63px;
     height: 63px;
-    top: 283px;
-    left: 283px;
+    top: 170px;
+    left: 170px;
     animation: myVehicleOrbit 10s linear infinite;
 }
 
@@ -23,22 +23,22 @@
     margin: auto;
     width: 63px;
     height: 63px;
-    top: 283px;
-    left: 283px;
+    top: 170px;
+    left: 170px;
     animation: myVehicleOrbit 5s linear infinite;
 }
 
 @keyframes myVehicleOrbit {
-    from { transform: rotate(0deg) translateY(-345px); }
-    to   { transform: rotate(360deg) translateY(-345px); }
+    from { transform: rotate(0deg) translateY(-231px); }
+    to   { transform: rotate(360deg) translateY(-231px); }
 }
 
 
 #planet {
     position: relative;
     margin: auto;
-    height: 630px;
-    width: 630px;
+    height: 400px;
+    width: 400px;
     border-radius: 50%;
     background-color: #bbb;
     /*animation: myPlanetRotation 50s linear infinite;
