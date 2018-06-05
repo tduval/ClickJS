@@ -45,6 +45,8 @@
 
             <div class="row elegant-color p-5" style="height: auto;">
                 <div id="planet">
+                    <div id="circleBicycle"></div>
+                    <div id="circleScooter"></div>
                     <animated-spritesheet v-for="vehicle in vehicles" :vehicle="vehicle" :key="vehicle.name"></animated-spritesheet>
                 </div>
             </div>
@@ -144,7 +146,7 @@
                                     </div>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" v-bind:style="'width: '+progress+'%'" role="progressbar" v-bind:aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar unique-color progress-bar-striped progress-bar-animated" v-bind:style="'width: '+progress+'%'" role="progressbar" v-bind:aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                         </div>`,

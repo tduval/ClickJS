@@ -61,3 +61,29 @@
     0% {background-position: 0 0;}
     100% {background-position: 800px 0;}
 }
+
+#circleBicycle {
+    position: absolute;
+    margin: auto;
+    height: 230px;
+    width: 230px;
+    top: 85px;
+    left: 85px;
+    border:1px dashed LightGray;
+    border-radius:50%;
+    opacity: 0.2;
+    background-color: tomato;
+}
+
+#circleScooter {
+    position: absolute;
+    margin: auto;
+    height: 300px;
+    width: 300px;
+    top: 50px;
+    left: 50px;
+    border:1px dashed LightGray;
+    border-radius:50%;
+    opacity: 0.2;
+    background-color: CornflowerBlue;
+}
