@@ -9,18 +9,28 @@
 }
 
 .vehicle-Scooter {
+    position: absolute;
+    margin: auto;
     width: 63px;
     height: 63px;
+    top: 283px;
+    left: 283px;
+    animation: myVehicleOrbit 10s linear infinite;
 }
 
 .vehicle-Car {
+    position: absolute;
+    margin: auto;
     width: 63px;
     height: 63px;
+    top: 283px;
+    left: 283px;
+    animation: myVehicleOrbit 10s linear infinite;
 }
 
 @keyframes myVehicleOrbit {
-    from { transform: rotate(360deg) translateY(283px); }
-    to   { transform: rotate(0deg) translateY(283px); }
+    from { transform: rotate(0deg) translateY(-345px); }
+    to   { transform: rotate(360deg) translateY(-345px); }
 }
 
 
