@@ -56,6 +56,27 @@
     box-shadow: inset 20px 0 80px 6px #496282;
     animation: myPlanetRotation 50s linear infinite;
 }
+#planet:after {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: -80px 15px 80px 10px rgba(0,0,0,.9) inset;
+}
+#planet:before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.2;
+  background: radial-gradient(circle at 100px 100px, #fff, #000);
+}
 
 @keyframes myPlanetRotation {
     0% {background-position: 0 0;}
